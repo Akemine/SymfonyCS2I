@@ -1,0 +1,56 @@
+{% extends './masters/main.html.twig' %}
+
+{% block header %}
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel"
+         style="z-index: -1; position:relative; height: 200px;">
+        <div class="carousel-inner rounded">
+            <div class="carousel-item active">
+                <img src="{{ asset('images/sliders/slider-bench-books.jpg') }}" alt="book1">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ asset('images/sliders/slider-book-flowers.jpg') }}" alt="book2">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ asset('images/sliders/slider-book-pages.jpg') }}" alt="book3">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ asset('images/sliders/slider-library-bulbs.jpg') }}" alt="book4">
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="jumbotron">
+        <h1 class="display-4"><strong>Bienvenue sur le site Gigastore !</strong></h1>
+        <p>Plus de 100 000 références à des prix imbattables !</p>
+        <input type="button" class="btn btn-primary" value="En savoir plus">
+    </div>
+    <div>
+        <h3 class="mt-5"> Bienvenue !</h3>
+        <p class="text-justify"><img class="m-2" src="{{ asset('images/charte/books.jpg') }}" alt="book" style="width: 300px; height: 200px; float: right;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem ipsum magni qui suscipit tempora! Accusamus
+            aspernatur atque blanditiis debitis dicta dolor dolore eius error eveniet expedita facilis fugit hic impedit
+            inventore ipsa ipsam iure iusto laudantium mollitia neque nihil, numquam odit perferendis quae quasi
+            quibusdam quod recusandae repudiandae saepe sed sit vel veniam veritatis. Aliquam asperiores autem
+            blanditiis consectetur dolore dolores ea eligendi error et ex facere incidunt iste maiores molestias, nemo
+            nesciunt nulla numquam perspiciatis placeat quidem quo ratione repellat similique sunt tempore temporibus
+            veritatis voluptate! Ab autem blanditiis corporis culpa cumque cupiditate delectus, ea eius esse eveniet
+            Saepe?
+        </p>
+
+        <p class="alert alert-dismissible alert-primary"> Promotion sur des <a href="{{ asset('index') }}"> livres</a>,
+            profitez en !</p>
+        <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem ipsum magni qui suscipit tempora! Accusamus
+            aspernatur atque blanditiis debitis dicta dolor dolore eius error eveniet expedita facilis fugit hic impedit
+            inventore ipsa ipsam iure iusto laudantium mollitia neque nihil, numquam odit perferendis quae quasi
+            quibusdam quod recusandae repudiandae saepe sed sit vel veniam veritatis. Aliquam asperiores autem
+            blanditiis consectetur dolore dolores ea eligendi error et ex facere incidunt iste maiores molestias, nemo
+            nesciunt nulla numquam perspiciatis placeat quidem quo ratione repellat similique sunt tempore temporibus
+            veritatis voluptate! Ab autem blanditiis corporis culpa cumque cupiditate delectus, ea eius esse eveniet
+            Saepe? blanditiis consectetur dolore dolores ea eligendi error et ex facere incidunt iste maiores molestias,
+            nemo
+            nesciunt nulla numquam perspiciatis placeat quidem quo ratione repellat similique sunt tempore temporibus
+            veritatis voluptate! Ab autem blanditiis corporis culpa cumque cupiditate delectus, ea eius esse eveniet</p>
+    </div>
+    {% include './partials/listeLivres.html.twig' %}
+{% endblock %}
