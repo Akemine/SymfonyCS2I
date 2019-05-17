@@ -1,0 +1,16 @@
+{% extends './masters/main.html.twig' %}
+{% block body %}
+    <h1>Liste des revendeurs</h1>
+    <div class="card-deck">
+    {% for revendeur in revendeurs %}
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('images/revendeurs/'~ revendeur.photo ) }}" alt="boutique">
+            <div class="card-body">
+                <h4 class="card-title">{{ revendeur.name }}</h4>
+                <p class="card-text">{{ revendeur.address }}<br>
+                {{ revendeur.zipCode }} <strong>{{ revendeur.ville }}</strong></p>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
