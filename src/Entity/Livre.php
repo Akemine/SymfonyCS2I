@@ -137,46 +137,6 @@ class Livre
      */
     private $codeGenre;
 
-    /**
-     * Livre constructor.
-     * @param string $id
-     * @param string $titre
-     * @param string|null $auteur
-     * @param string|null $editeur
-     * @param string|null $collection
-     * @param int|null $annee
-     * @param string|null $support
-     * @param string|null $format
-     * @param string|null $description
-     * @param int $pages
-     * @param string $poids
-     * @param string $prix
-     * @param string $port
-     * @param int|null $delaiDeLivraison
-     * @param string|null $photo
-     * @param int|null $nouveaute
-     * @param \Genre $codeGenre
-     */
-    public function __construct(string $id, string $titre, ?string $auteur, ?string $editeur, ?string $collection, ?int $annee, ?string $support, ?string $format, ?string $description, int $pages, string $poids, string $prix, string $port, ?int $delaiDeLivraison, ?string $photo, ?int $nouveaute, \Genre $codeGenre)
-    {
-        $this->id = $id;
-        $this->titre = $titre;
-        $this->auteur = $auteur;
-        $this->editeur = $editeur;
-        $this->collection = $collection;
-        $this->annee = $annee;
-        $this->support = $support;
-        $this->format = $format;
-        $this->description = $description;
-        $this->pages = $pages;
-        $this->poids = $poids;
-        $this->prix = $prix;
-        $this->port = $port;
-        $this->delaiDeLivraison = $delaiDeLivraison;
-        $this->photo = $photo;
-        $this->nouveaute = $nouveaute;
-        $this->codeGenre = $codeGenre;
-    }
 
     public function getId(): ?string
     {

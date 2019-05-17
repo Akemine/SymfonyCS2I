@@ -26,21 +26,21 @@ gigastore_revendeurs:
     path: /liste-revendeurs
     controller: App\Controller\RevendeurController::index
 
-gigastore_admin_add_genre:
-    path: /admin/add-genre
-    controller: App\Controller\GenreAdminController::addGenre
+gigastore_admin_add_entity:
+    path: /admin/add/{entity}
+    controller: App\Controller\GenreAdminController::addEntity
 
-gigastore_admin_edit_genre:
-    path: /admin/edit-genre/{codeGenre}
-    controller: App\Controller\GenreAdminController::editGenre
+gigastore_admin_edit_entity:
+    path: /admin/edit/{entity}/{id}
+    controller: App\Controller\GenreAdminController::editEntity
 
-gigastore_admin_delete_genre:
-    path: /admin/delete-genre/{codeGenre}
-    controller: App\Controller\GenreAdminController::deleteGenre
+gigastore_admin_delete_entity:
+    path: /admin/delete/{entity}/{id}
+    controller: App\Controller\GenreAdminController::deleteEntity
 
-gigastore_admin_genres:
-    path: /admin/genres
-    controller: App\Controller\GenreAdminController::afficherLesGenres
+gigastore_admin_list_entity:
+    path: /admin/{entity}
+    controller: App\Controller\GenreAdminController::DisplayEntity
 
 gigastore_liste_themes:
     path: /liste-themes

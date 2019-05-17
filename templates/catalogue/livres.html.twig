@@ -15,9 +15,9 @@
                 <img class="img-fluid rounded my-2 mt-3" src="{{ asset( 'images/livres/medium/'~ livre.photo) }}"
                      alt="imgGallery">
                 <h3><a href="{{ path('gigastore_fiche_livre', {id: livre.id}) }}">{{ livre.titre }}</a></h3>
-                <p> <strong>Auteur :</strong> {{ livre.auteur }}<br>
+                <p> <strong> Auteur :</strong> {{ livre.auteur }}<br>
                     <strong> Editeur :</strong> {{ livre.editeur }}<br>
-                    <strong>Collection :</strong> {{ livre.collection }}</p>
+                    <strong> Collection :</strong> {{ livre.collection }}</p>
 
                 <p><strong> Genre :</strong> {{ livre.codegenre.intitule }}</p>
                 <span class="badge badge-primary mb-3"> Prix : {{ livre.prix }} €</span>

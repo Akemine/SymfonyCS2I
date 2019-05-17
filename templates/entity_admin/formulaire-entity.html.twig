@@ -1,6 +1,6 @@
 {% extends './masters/main.html.twig' %}
 {% block body %}
-    <h1>{{ titre }} un genre :</h1>
+    <h1>{{ titre }} un {{ entity | lower}} :</h1>
     {% form_theme vueFormulaire 'bootstrap_4_layout.html.twig' %}
     {{ form(vueFormulaire) }}
 {% endblock %}

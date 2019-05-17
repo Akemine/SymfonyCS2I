@@ -2,8 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Genre;
-use App\Form\GenreType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,16 +10,16 @@ class GenreAdminController extends AbstractController
 {
     /**
      * @param Request $request
+     * @param $entity
      * @return Response
      */
-    public function addGenre(Request $request)
+    public function addEntity(Request $request, $entity)
     {
         $titre = 'Ajouter';
 
-        $genre = new Genre('', '');
-        $form = $this->createForm(GenreType::class, $genre);
-
-
+        $objet = "App\\Entity\\".$entity;
+        $instance = new $objet;
+        $form = $this->createForm( "App\\Form\\".$entity.'Type', $instance);
 
         // il faut penser à ajouter un objet request
         // l'objet form va reçevoir les infos et les mettres dans l'objet $genre
@@ -30,33 +28,40 @@ class GenreAdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             //Le genre est ok. On peut le stocker dans la bdd
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($genre);
+            $entityManager->persist($instance);
             $entityManager->flush();
 
             $this->get('session')
                 ->getFlashBag()
-                ->set('message', 'Le genre ' . $genre -> getCode() .' a été ajouté avec succès');
+                ->set('message', 'Le genre ' . $instance -> getCode() .' a été ajouté avec succès');
 
-            return $this->redirectToRoute('gigastore_admin_genres');
+            return $this->redirectToRoute('gigastore_admin_list_entity', ['entity' => $entity]);
         }
 
-        return $this->render('genre_admin/formulaire-genre.html.twig',
+        return $this->render('entity_admin/formulaire-entity.html.twig',
             [
                 'vueFormulaire' => $form->createView(),
-                'titre' => $titre
+                'titre' => $titre,
+                'entity' => $entity
             ]);
     }
 
-    public function editGenre(Request $request, $codeGenre)
+    /**
+     * @param Request $request
+     * @param $id
+     * @param $entity
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
+    public function editEntity(Request $request, $id, $entity)
     {
         $titre = 'Modifier';
 
-        $genre = $this->getDoctrine()
+        $items = $this->getDoctrine()
             ->getManager()
-            ->getRepository(Genre::class)
-            ->find($codeGenre);
+            ->getRepository("App\\Entity\\".$entity)
+            ->find($id);
 
-        $form = $this->createForm(GenreType::class, $genre);
+        $form = $this->createForm("App\\Form\\".$entity.'Type', $items);
 
         // il faut penser à ajouter un objet request
         // l'objet form va reçevoir les infos et les mettres dans l'objet $genre
@@ -69,47 +74,63 @@ class GenreAdminController extends AbstractController
 
             $this->get('session')
                 ->getFlashBag()
-                ->set('message', 'Le genre ' . $codeGenre . ' a été modifié avec succès');
+                ->set('message', 'Le genre ' . $id . ' a été modifié avec succès');
 
-            return $this->redirectToRoute('gigastore_admin_genres');
+            return $this->redirectToRoute('gigastore_admin_list_entity', ['entity' => $entity]);
         }
 
-        return $this->render('genre_admin/formulaire-genre.html.twig',
+        return $this->render('entity_admin/formulaire-entity.html.twig',
             [
                 'vueFormulaire' => $form->createView(),
-                'titre' => $titre
+                'titre' => $titre,
+                'items' => $items,
+                'entity' => $entity
             ]);
     }
 
-    public function deleteGenre($codeGenre)
+    /**
+     * @param $codeGenre
+     * @param $entity
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function deleteEntity($id, $entity)
     {
         $entityManager = $this->getDoctrine()->getManager();
-        $genre = $entityManager->getRepository(Genre::class)
-            ->find($codeGenre);
+        $instance = $entityManager->getRepository("App\\Entity\\".$entity)
+            ->find($id);
 
-        if ($genre == null) {
-            throw $this->createNotFoundException('Genre introuvable');
+        if ($instance == null) {
+            throw $this->createNotFoundException($entity.' introuvable');
         }
         $this->get('session')
             ->getFlashBag()
-            ->set('message', 'Le genre ' . $codeGenre . ' a été supprimé avec succès');
-        $entityManager->remove($genre);
+            ->set('message', 'Le genre ' . $id . ' a été supprimé avec succès');
+        $entityManager->remove($instance);
 
         $entityManager->flush();
 
-        return $this->redirectToRoute('gigastore_admin_genres');
+        return $this->redirectToRoute('gigastore_admin_list_entity', ['entity' => $entity]);
     }
 
-    public function afficherLesGenres()
+    public function DisplayEntity($entity)
     {
-        $genres = $this->getDoctrine()
+        $items = $this->getDoctrine()
             ->getManager()
-            ->getRepository(Genre::class)
+            ->getRepository('App\\Entity\\'.$entity)
             ->findAll();
 
-        return $this->render('genre_admin/genres.html.twig',
+        $formTypeName = "App\\Form\\".$entity."Type";
+        $FormTypeName = new $formTypeName;
+
+        $labels = $FormTypeName->getList();
+        $primaryKey = $FormTypeName->getPrimaryKey();
+
+        return $this->render('entity_admin/entity.html.twig',
             [
-                'genres' => $genres
+                'items' => $items,
+                'entity' => $entity,
+                'labels' => $labels,
+                'primaryKey' => $primaryKey
             ]);
     }
 }

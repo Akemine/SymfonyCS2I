@@ -28,18 +28,6 @@ class Genre
      * @ORM\Column(name="intitule", type="string", length=30, nullable=false)
      */
     private $intitule;
-
-    /**
-     * Genre constructor.
-     * @param string $code
-     * @param string $intitule
-     */
-    public function __construct(string $code, string $intitule)
-    {
-        $this->code = $code;
-        $this->intitule = $intitule;
-    }
-
     /**
      * @param string $code
      */

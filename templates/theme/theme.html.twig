@@ -1,1 +1,30 @@
 {% extends './masters/main.html.twig' %}
+{% block body %}
+    <div class="row">
+        <div class="text-center col-md-12">
+            <h1><strong>Choisissez un thème :</strong></h1>
+            {#{{ dump(app.request.cookies.get('theme')) }}#}
+            {#<button class="btn btn-primary" name="United">Slate</button>#}
+            <div class="m-2 card-deck">
+            {% for theme in themes %}
+
+                    <div class="col-md-4 border">
+                        <div class="card-header m-2 card bg-primary text-white">
+                            <a href="{{ path('gigastore_choisir_themes', {theme: theme}) }}"
+                               class="text-white">{{ theme | upper }}</a>
+                        </div>
+                        <hr>
+                        <div class="card-body">
+                            <a href="{{ path('gigastore_choisir_themes', {theme: theme}) }}"><img
+                                        class="img-fluid card-text "
+                                        src="{{ asset('images/themes/'~theme~'.png') }}"
+                                        alt="{{ theme }}'_theme"></a>
+                        </div>
+                    </div>
+
+            {% endfor %}
+                </div>
+
+        </div>
+    </div>
+{% endblock %}
