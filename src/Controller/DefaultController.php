@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
@@ -17,4 +16,6 @@ class DefaultController extends AbstractController
     public function staticPage($page){
     return $this->render("static/$page.html.twig");
     }
+
+
 }

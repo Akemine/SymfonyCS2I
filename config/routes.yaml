@@ -4,14 +4,48 @@ index:
 
 static_route:
     path: /information/{page}
-    controller: App\Controller\DefaultController:staticPage
+    controller: App\Controller\DefaultController::staticPage
     requirements:
         page: cgv|mentions-legales|qui-sommes-nous
 
 contact:
     path: /contact
-    controller: App\Controller\ContactController:contact
+    controller: App\Controller\ContactController::contact
 
-livres:
-    path: /livres
-    controller: App\Controller\CatalogueController:livres
+gigastore_fiche_livre:
+    path: /fiche-livre/{id}
+    controller: App\Controller\CatalogueController::ficheLivre
+
+gigastore_livres:
+    path: /liste-livres/{critere}
+    controller: App\Controller\CatalogueController::index
+    defaults:
+        critere: TOUT
+
+gigastore_revendeurs:
+    path: /liste-revendeurs
+    controller: App\Controller\RevendeurController::index
+
+gigastore_admin_add_genre:
+    path: /admin/add-genre
+    controller: App\Controller\GenreAdminController::addGenre
+
+gigastore_admin_edit_genre:
+    path: /admin/edit-genre/{codeGenre}
+    controller: App\Controller\GenreAdminController::editGenre
+
+gigastore_admin_delete_genre:
+    path: /admin/delete-genre/{codeGenre}
+    controller: App\Controller\GenreAdminController::deleteGenre
+
+gigastore_admin_genres:
+    path: /admin/genres
+    controller: App\Controller\GenreAdminController::afficherLesGenres
+
+gigastore_liste_themes:
+    path: /liste-themes
+    controller: App\Controller\ThemeController::afficherTheme
+
+gigastore_choisir_themes:
+    path: /liste-themes/{theme}
+    controller: App\Controller\ThemeController::choisirTheme

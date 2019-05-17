@@ -1,7 +1,7 @@
 {% set route = app.request.get('_route') %}
 {% set routeStatic = app.request.get('page')%}
 {#{{ dump(app) }}#}
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary rounded">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="{{ path('index') }}"> <i class="fas fa-home mr-1"></i>
         Accueil</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -11,22 +11,36 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item {{ route =='livres'?'active':'' }}"> {# calcul ternaire qui dit Si route = livre alors on écrit active, sinon vide.#}
-                <a class="nav-link" href="{{ path('livres') }}"> <i class="fas fa-book mr-1"></i> Livres</a>
+            <li class="nav-item {{ route =='gigastore_livres'?'active':'' }}"> {# calcul ternaire qui dit Si route = livre alors on écrit active, sinon vide.#}
+                <a class="nav-link" href="{{ path('gigastore_livres') }}"> <i class="fas fa-book mr-1"></i> Livres</a>
             </li>
             <li class="nav-item {{ route =='livres'?'active':'' }}">
-                <a class="nav-link" href="{{ path('livres') }}"> <i class="fab fa-youtube mr-1"></i> DVD</a>
+                <a class="nav-link" href="{{ path('gigastore_livres') }}"> <i class="fab fa-youtube mr-1"></i> DVD</a>
             </li>
             <li class="nav-item {{ route =='livres'?'active':'' }}">
-                <a class="nav-link" href="{{ path('livres') }}"> <i class="far fa-eye mr-1"></i> Spectacles</a>
+                <a class="nav-link" href="{{ path('gigastore_livres') }}"> <i class="far fa-eye mr-1"></i> Spectacles</a>
             </li>
             <li class="nav-item {{ route =='livres'?'active':'' }}">
-                <a class="nav-link" href="{{ path('livres') }}"> <i class="fas fa-desktop mr-1"></i> Informatique</a>
+                <a class="nav-link" href="{{ path('gigastore_livres') }}"> <i class="fas fa-desktop mr-1"></i> Informatique</a>
+            </li>
+            <li class="nav-item {{ route =='livres'?'active':'' }}">
+                <a class="nav-link" href="{{ path('gigastore_revendeurs') }}"> <i class="fas fa-bullhorn"></i> Revendeurs</a>
+            </li>
+            <li class="nav-item {{ route =='gigastore_admin_genres'?'active':'' }}">
+                <a class="nav-link" href="{{ path('gigastore_admin_genres') }}"> <i class="fas fa-venus-mars"></i> Genres </a>
             </li>
         </ul>
     </div>
     <div>
         <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Paramètre
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ path('gigastore_liste_themes') }}">Thèmes</a>
+                    <a class="dropdown-item" href="#">Options</a>
+            </li>
             <li class="nav-item {{ routeStatic =='qui-sommes-nous'?'active':'' }} ">
                 <a class="nav-link" href="{{ path('static_route', {page: 'qui-sommes-nous'}) }}"> <i class="fas fa-info-circle mr-1"></i> Qui sommes-nous ?</a>
             </li>

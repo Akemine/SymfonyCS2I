@@ -1,13 +1,15 @@
 <p class="text-center">Ce mois-ci</p>
-<img class="img-fluid rounded mb-1" src="{{ asset('images/livres/medium/bilal_32decembre.jpg') }}" alt="thisMonthBook">
+
+<img class="img-fluid rounded mb-1" src="{{ asset('images/livres/medium/' ~ livreDuMois.photo) }}" alt="thisMonthBook">
 <div class="rounded" style="background: #fff; border: solid 1px;">
-    <h2 class="m-2">32 Décembre</h2>
+
+    <h2 class="m-2"><a href="{{ path('gigastore_fiche_livre', {id: livreDuMois.id}) }}"> {{ livreDuMois.titre }}</a></h2>
     <ul>
-        <li>Auteur : <strong class="text-primary">Enki Bilal</strong></li>
-        <li>Éditeur : <strong class="text-primary">Les humanoïdes associés</strong></li>
+        <li>Auteur : <strong class="text-primary">{{ livreDuMois.auteur }}</strong></li>
+        <li>Éditeur : <strong class="text-primary">{{ livreDuMois.editeur }}</strong></li>
     </ul>
 
-    <input type="button" class="btn btn-primary m-2" value="Prix : 13.00€">
+    <input type="button" class="btn btn-primary m-2" value="Prix : {{ livreDuMois.prix }} €">
     <p class="m-2">Attention, évènement ! Cinq ans après Le Sommeil du monstre, paru en 1998, <strong
                 class="text-primary">Enki Bilal</strong> est de retour, Nom de l'album : <strong>32 décembre </strong>
     </p>

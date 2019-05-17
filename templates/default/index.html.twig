@@ -3,7 +3,7 @@
 {% block header %}
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel"
          style="z-index: -1; position:relative; height: 200px;">
-        <div class="carousel-inner rounded">
+        <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="{{ asset('images/sliders/slider-bench-books.jpg') }}" alt="book1">
             </div>
@@ -38,7 +38,7 @@
             Saepe?
         </p>
 
-        <p class="alert alert-dismissible alert-primary"> Promotion sur des <a href="{{ asset('index') }}"> livres</a>,
+        <p class="alert alert-dismissible alert-primary"> Promotion sur des <a href="{{ path('gigastore_livres') }}"> livres</a>,
             profitez en !</p>
         <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem ipsum magni qui suscipit tempora! Accusamus
             aspernatur atque blanditiis debitis dicta dolor dolore eius error eveniet expedita facilis fugit hic impedit

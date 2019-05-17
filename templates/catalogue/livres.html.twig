@@ -1,10 +1,28 @@
 {% extends './masters/main.html.twig' %}
 
 {% block body %}
-    <div class="jumbotron">
-        <h1 class="display-4"><strong>Page en construction !</strong></h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci aspernatur at atque beatae, deserunt
-            dignissimos doloribus enim exercitationem id iure labore modi nam obcaecati officia repellendus
-            reprehenderit repudiandae sapiente temporibus totam. Aliquid aspernatur atque autem doloribus ducimus ex</p>
+    <h2>Catalogue des livres</h2>
+    <a href="{{ path('gigastore_livres') }}" class="btn bg-primary m-3 text-white">Tous les genres</a>
+    {% for genre in genres %}
+        <a href="{{ path('gigastore_livres', {critere: genre.code}) }}"
+           class="m-3">{{ genre.intitule }}</a>
+    {% endfor %}
+    <div class="row">
+        {% set compteur = livres | length %}
+        {% for livre in livres %}
+
+            <div class="col-md-4 rounded" style="border: solid 1px;">
+                <img class="img-fluid rounded my-2 mt-3" src="{{ asset( 'images/livres/medium/'~ livre.photo) }}"
+                     alt="imgGallery">
+                <h3><a href="{{ path('gigastore_fiche_livre', {id: livre.id}) }}">{{ livre.titre }}</a></h3>
+                <p> <strong>Auteur :</strong> {{ livre.auteur }}<br>
+                    <strong> Editeur :</strong> {{ livre.editeur }}<br>
+                    <strong>Collection :</strong> {{ livre.collection }}</p>
+
+                <p><strong> Genre :</strong> {{ livre.codegenre.intitule }}</p>
+                <span class="badge badge-primary mb-3"> Prix : {{ livre.prix }} €</span>
+            </div>
+        {% endfor %}
+
     </div>
 {% endblock %}

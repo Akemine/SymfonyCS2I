@@ -1,0 +1,13 @@
+<hr>
+<div class="rounded mt-3" style="background: #fff; border: solid 1px;">
+    <h2 class="m-3 text-center">nouveautés</h2>
+    {% for newLivre in newLivres %}
+        <hr>
+        <p class="ml-2 text-center">
+            <a href="{{ path('gigastore_fiche_livre', {id: newLivre.id}) }}"><img src="{{ asset('images/livres/vignettes/'~newLivre.photo) }}" alt="vignette_image"></a>
+            <br>
+            {{ newLivre.auteur }}<br>
+            <span class="badge badge-warning">{{ newLivre.prix }} € </span></p>
+    {% endfor %}
+</div>
+
