@@ -1,6 +1,6 @@
 {% extends './masters/main.html.twig' %}
 {% block body %}
-    <h1>Liste des {{ entity | lower }} <a href="{{ path('gigastore_admin_add_entity', { entity: entity }) }}"><i
+    <h1>Liste des {{ entity | lower }}s <a href="{{ path('gigastore_admin_add_entity', { entity: entity }) }}"><i
                     class="fas fa-plus-circle"></i></a></h1>
     {#    {{ dump(app) }}#}
     {% for flashMessage in app.session.flashbag.get('message') %}
