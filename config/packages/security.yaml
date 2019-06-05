@@ -22,3 +22,9 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+
+    role_hierarchy:
+        ROLE_CUSTOMER: ROLE_USER
+        ROLE_VIP: ROLE_CUSTOMER
+        ROLE_ADMIN: ROLE_USER
+        ROLE_SUPERMAN: ROLE_VIP, ROLE_ADMIN
